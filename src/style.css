@@ -33,11 +33,23 @@ a:focus {
 /* ---------------------------------------------------
     HEADER STYLE
 ----------------------------------------------------- */
-#topbar .topbar-header {
-    padding: 10px 20px;
+#topbar .topbar-header {    
     background: rgb(65, 66, 65);
     color: #f1efef;
+    height: 50px; 
+    padding: 10px 20px;
 }
+
+#header-left {
+    float: left;
+    width: 50%;
+}
+#header-right {
+    float: right;
+    width: 50%;
+    text-align: right;
+}
+
 
 /* ---------------------------------------------------
     SIDEBAR STYLE

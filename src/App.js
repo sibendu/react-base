@@ -19,7 +19,7 @@ function App() {
 
   const [page, setPage] = useState("Home");
   const [user, setUser] = useState();
-	
+  
   if(!user) {
     return (
       <div className="wrapper">
@@ -63,7 +63,7 @@ function App() {
             </div> 
             
         </div>
-        <div class="footer">
+        <div className="footer">
           <Footer sx={{ mt: 8, mb: 4 }} />
         </div>        
   </div>

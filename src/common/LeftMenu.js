@@ -72,7 +72,7 @@ export default function LeftMenu(props) {
 
     return (
         <nav id="sidebar">
-        <div className="sidebar-header">
+        <div id="leftmenu" className="sidebar-header">
             <ul className="list-unstyled components">
                 {
                     menuItems.map(item => {
