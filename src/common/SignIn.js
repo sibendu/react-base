@@ -15,6 +15,10 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import Footer from './Footer';
 
+import { GoogleLogin } from 'react-google-login';
+
+const clientId = '100566415934-k4r4eks1aj94vcadle7kca0uqkv5etk4.apps.googleusercontent.com';
+
 const theme = createTheme();
 
 async function loginUser(credentials) {
@@ -54,6 +58,16 @@ export default function SignIn({ setUser }) {
     setUser(user);
   }
 
+  const onSuccess = (res) => {
+    console.log('[Login success] currentUser:', res.profileObj);
+    const user = {'name':res.profileObj.givenName, 'roles':['SUPERADMIN'], 'fullname': res.profileObj.name, 'email': res.profileObj.email, 'imageUrl': res.profileObj.imageUrl, 'googleId': res.profileObj.googleId}; 
+    setUser(user);
+  }
+
+  const onFailure = (res) => {
+    console.log('[Login failure] res:', res);
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -69,9 +83,25 @@ export default function SignIn({ setUser }) {
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
+
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign in using
           </Typography>
+
+          <GoogleLogin
+              clientId={clientId}
+            buttonText="Login"
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            cookiePolicy={'single_host_origin'}
+            style={{marginTop: '100px'}}
+            isSignedIn={true}
+          />
+
+          <Typography component="h1" variant="h5">
+            Or, 
+          </Typography>
+
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"

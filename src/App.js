@@ -35,7 +35,7 @@ function App() {
   return (
     <div className="wrapper">
 
-      <Header user={user} /> 
+      <Header user={user} setUser={setUser} /> 
 
       <div className="wrapper clearfix">
             <LeftMenu onClick={handlePageNavigation} user={user}/>
